@@ -1,5 +1,9 @@
 const path = require(`path`)
 
+exports.onCreateNode = ({ node }) => {
+  console.log('node---type:', node.internal.type)
+}
+
 exports.createPages = ({ boundActionCreators }) => {
   const { createPage } = boundActionCreators
   const slugs = ['page1', 'page2']
