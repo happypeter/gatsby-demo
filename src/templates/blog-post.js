@@ -1,9 +1,10 @@
 import React from 'react'
 
-export default () => {
+export default ({ pathContext }) => {
+  const { slug } = pathContext
   return (
     <div>
-      模板文件 blog-post
+      模板文件 {slug}
     </div>
   )
 }
