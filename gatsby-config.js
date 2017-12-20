@@ -7,7 +7,14 @@ module.exports = {
         path: `${__dirname}/data/`
       }
     },
-    'gatsby-transformer-remark',
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          `gatsby-remark-prismjs`
+        ]
+      }
+    },
     'gatsby-transformer-json'
   ]
 }
