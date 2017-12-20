@@ -4,9 +4,13 @@ import Link from 'gatsby-link'
 
 export default ({ data, pathContext }) => {
   const post = data.markdownRemark
+  const { title } = data.indexJson
   const { prev, next } = pathContext
   return (
     <Wrap>
+      <Title>
+        {title}
+      </Title>
       <div className='markdown-content'
         dangerouslySetInnerHTML={{ __html: post.html }}
       />
@@ -29,9 +33,12 @@ export default ({ data, pathContext }) => {
 }
 
 export const query = graphql`
-  query BlogPostQuery($slug: String!) {
+  query BlogPostQuery($slug: String!, $pid: String!) {
     markdownRemark(fields: { slug: { eq: $slug }}) {
       html
+    }
+    indexJson(id: {eq: $pid}) {
+      title
     }
   }
 `
@@ -58,4 +65,9 @@ const Wrap = styled.div`
     padding: 20px;
     flex-grow: 1;
   }
+`
+const Title = styled.div`
+  font-size: 20px;
+  text-align: center;
+  font-weight: 600px;
 `
