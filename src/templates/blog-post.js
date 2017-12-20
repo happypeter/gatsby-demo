@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import Link from 'gatsby-link'
+import Helmet from 'react-helmet'
+
 
 export default ({ data, pathContext }) => {
   const post = data.markdownRemark
@@ -8,6 +10,7 @@ export default ({ data, pathContext }) => {
   const { prev, next } = pathContext
   return (
     <Wrap>
+      <Helmet title={title} />
       <Title>
         {title}
       </Title>
